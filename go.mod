@@ -1,4 +1,4 @@
-module github.com/Siftos/sifdb.git
+module github.com/Siftos/sifdb
 
 go 1.19
 

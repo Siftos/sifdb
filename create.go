@@ -5,6 +5,16 @@ import (
 	"errors"
 )
 
+//Initiates a new table in the database. The table should be a struct with json tags
+//to be able to easily unmarshal the content later.
+//Example struct to give as table:
+/*
+type User struct {
+	id        int     `json:"id"` -- mandatory field to have in every struct
+	username  string  `json:"username"`
+	password  string  `json:"password"`
+}
+*/
 func Create(table interface{}, db *sql.DB) error {
 	encoded_struct, err := encodeToArray(table)
 	standard_err_msg := "error while trying to create table " + encoded_struct.table_name + ": "

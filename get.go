@@ -5,6 +5,46 @@ import (
 	"fmt"
 )
 
+// sifdb.Get is what you use to fetch from the database. It takes
+// a struct containing what fields you want to filter on. Example program:
+/*
+type User struct {
+	Id       int    `json:"id"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+func main() {
+	db := sifdb.Open("test.sqlite")
+	if err := sifdb.Create(User{}, db); err != nil {
+		fmt.Println(err)
+		return
+	}
+	user := User{}
+	user.Id = 2
+	if user, err := getUser(user, db); err != nil {
+		fmt.Println(err)
+		return
+	} else {
+		fmt.Println(user)
+	}
+}
+
+func getUser(user User, db *sql.DB) (User, error) {
+	jsonString, err := sifdb.Get(user, db)
+	if err != nil {
+		return User{}, err
+	}
+	if len(jsonString) == 0 {
+		return User{}, errors.New("no user found")
+	}
+	if len(jsonString) > 1 {
+		return User{}, errors.New("found too many users")
+	}
+	json.Unmarshal([]byte(jsonString[0]), &user)
+	return user, nil
+}
+*/
 func Get(database_struct interface{}, db *sql.DB) ([]string, error) {
 	encoded_struct, err := encodeToArray(database_struct)
 	if err != nil {

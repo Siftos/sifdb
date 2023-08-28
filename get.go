@@ -1,5 +1,6 @@
 package sifdb
 
+//small test
 import (
 	"database/sql"
 	"fmt"

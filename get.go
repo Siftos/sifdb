@@ -2,7 +2,6 @@ package sifdb
 
 import (
 	"database/sql"
-	"errors"
 	"fmt"
 )
 
@@ -85,10 +84,6 @@ func Get(database_struct interface{}, db *sql.DB) ([]string, error) {
 			return []string{}, err
 		}
 		result = append(result, createJson(temp_encoded_struct))
-	}
-
-	if len(result) == 0 {
-		return []string{}, errors.New("there was no records found in table " + encoded_struct.table_name + " with the specified criteria")
 	}
 
 	return result, nil
